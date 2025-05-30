@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --pink: #ffb6c1;
+            --light-pink: #ffdfe4;
+            --dark-pink: #d88a97;
+            --white: #fff9fb;
+            --text: #5a4a4e;
+        }
+        
+        body {
+            font-family: 'Nunito', 'Arial Rounded MT Bold', sans-serif;
+            background-color: var(--white);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--light-pink), var(--pink));
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 16px rgba(216, 138, 151, 0.15);
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-weight: 800;
+        }
+        
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            margin: 25px auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        section {
+            background-color: white;
+            padding: 30px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(216, 138, 151, 0.1);
+        }
+        
+        h2 {
+            color: var(--dark-pink);
+            font-size: 2em;
+            margin-top: 0;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--pink);
+            border-radius: 2px;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(216, 138, 151, 0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+        
+        .caption h3 {
+            margin: 0 0 5px 0;
+            color: var(--dark-pink);
+        }
+        
+        .caption p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-img {
+            flex: 1;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 20px;
+            background-color: var(--pink);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            background-color: var(--dark-pink);
+            transform: scale(1.05);
+        }
+        
+        .contact-link i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--dark-pink);
+            font-size: 0.9em;
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--pink), transparent);
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                max-width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="formal.jpeg"Profile Picture class="profile-pic">
+            <h1>Phrenstien Alberto</h1>
+            <p class="tagline">Bachelor of Multimedia Arts from PCU-D</p>
+        </header>
+        
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p style="text-align: justify;">Hello! I am Phrenstien Alberto, a passionate student on multimedia arts and willing to explore on my capabilities. My designs focuses on creating simple yet tells a story, it blends traditional art techniques with modern technology. I constantly seek to push creative boundaries through projects in animation, graphic design, photography, and immersive media. As a multimedia art student, I do not just create visuals but I build experiences. I am always chasing that moment where something clicks, not just visually but emotionally. Art is my interface, the world is medium.</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="divider"></div>
+        
+        <section id="design">
+            <h2>Design Projects</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="light.png" class="gallery-img">
+                    <div class="caption">
+                        <h3>3D Lighting and Shading</h3>
+                        <p>Serene and Simplicity room using red, pink and purple theme</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="head.png" class="gallery-img">
+                    <div class="caption">
+                        <h3>3D Human Head</h3>
+                        <p>A digital face, stripped of identity but full of meaning</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="mesh.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>3D 50 Meshes</h3>
+                        <p>Foundation of form and flow in 3D design</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="typo lab.png" class="gallery-img">
+                    <div class="caption">
+                        <h3>3D Typography</h3>
+                        <p>A typographic build that balances precision and play</p>
+                    </div>
+                </div>
+            <div class="gallery-item">
+                    <img src="belen.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>DIY Belen</h3>
+                        <p>Tradition meets imagination — concept to creation</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="LAB 2 FREE HAND.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>Freehand Drawing</h3>
+                        <p>Turning awareness into action</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="LINE ELEMENT.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>Line Element</h3>
+                        <p>One line — connecting form, feeling, and function.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                   <video width="250" height="200" autoplay muted>
+  <source src="record.mov" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+                    <div class="caption">
+                        <h3>3D Logo</h3>
+                        <p>A message, A symbol</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                  <section id="print media">
+            <h2>Print Medias</h2>
+            <div class="gallery">
+                 <div class="gallery-item">
+                    <img src="before 1st.png" width="250" height="230">
+                    <div class="caption">
+                        <h3>Brochure 1st page</h3>
+                        <p>Communication paper — an experience</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="before 2nd.png" width="250" height="230">
+                    <div class="caption">
+                        <h3>Brochure 2nd page</h3>
+                        <p>Communication paper — an experience</p>
+                    </div>
+                </div>
+                 <div class="gallery-item">
+                    <img src="m.jpg" width="250" height="230">
+                    <div class="caption">
+                        <h3>SVG Magazine</h3>
+                        <p>A publication that reflects my perspective</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="photo app.jpeg" width="250" height="230">
+                    <div class="caption">
+                        <h3>Photo Appropiation</h3>
+                        <p>This image explores the visual language — how culture, fashion, and identity intersect</p>
+                    </div>
+                </div>
+            </div>
+                 </section>
+
+                 <section id="photography">
+            <h2>Photography Gallery</h2>
+            <div class="gallery">
+                 <div class="gallery-item">
+                    <img src="product.png" class="gallery-img">
+                    <div class="caption">
+                        <h3>Product Photography</h3>
+                        <p>My lens, my light, your daily essential — a fresh take on freshness</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="pic.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>Perspective Photograph</h3>
+                        <p>Leading lines, quiet focus</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="pic2.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>Wide Shot Photograph</h3>
+                        <p>Every spark through the lense</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="IMG_3097.jpeg" class="gallery-img">
+                    <div class="caption">
+                        <h3>Color Photograph</h3>
+                        <p>Palette does the talking</p>
+                    </div>
+                </div>
+             </section>
+
+             <section id="Doodles">
+            <h2>Doodle Projects</h2>
+            <div class="gallery">
+                 <div class="gallery-item">
+                    <img src="c.png" class="gallery-img">
+                    <div class="caption">
+                        <h3>3D Character</h3>
+                        <p>Personality built in polygons</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="a.png" class="gallery-img">
+                    <div class="caption">
+                        <h3>3D Chair</h3>
+                        <p>Vision of sculpted chair</p>
+                    </div>
+                </div>
+                 <div class="gallery-item">
+                    <div class="caption">
+                        <h3 style="text-align: center;">Animated Text</h3>
+                    <img src="tin.gif" alt="Computer man" style="width:150px;height:150px;">
+                    </div>
+                </div>
+                 </section>
+        
+        <section id="Photoshoot">
+            <h2>Photoshoot Gallery</h2>
+            <div class="gallery">
+                 <div class="gallery-item">
+                    <img src="closeup.JPG" class="gallery-img">
+                    <div class="caption">
+                        <h3>Close Up Shot</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="wholebody.JPG" class="gallery-img">
+                    <div class="caption">
+                        <h3>Whole Body Shot</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="half body.JPG" class="gallery-img">
+                    <div class="caption">
+                        <h3>Half Body Shot</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="halfbody.JPG" class="gallery-img">
+                    <div class="caption">
+                        <h3>Half Body Shot</h3>
+                    </div>
+                </div>
+                 </section>
+
+        <section id="contact">
+            <h2>Let's Create Together</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 30px;">I'm always excited to collaborate on beautiful projects. Whether you need photography, branding, or design services, let's make something magical together!</p>
+            <div class="contact-links">
+                <a href="alberto.phrenstienn@gmail.com" class="contact-link">
+                    <i class="fas fa-envelope"></i> Email 
+                </a>
+                <a href="https://www.facebook.com/phrenstien.alberto" class="contact-link">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Made with <i class="fas fa-heart" style="color: var(--pink);"></i> and creativity</p>
+        </footer>
+    </div>
+</body>
+</html>
